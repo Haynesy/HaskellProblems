@@ -98,7 +98,14 @@ main = hspec $ do
         
         it "can succeed using a list of Int's" $
             isPalindrome [1,2,4,8,16, 8,4,2,1] `shouldBe` True
+    
+    describe "Problem 7 - Flatten a nested list structure" $ do
         
+        it "can flatten a single element list" $
+            flatten (Elem 5) `shouldBe` [5]
+
+        it "cam flatten a nested list" $
+            flatten (List [Elem 1, List [Elem 2, List [Elem 3, Elem 4], Elem 5]]) `shouldBe` [1,2,3,4,5]
 
 
 
