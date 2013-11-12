@@ -22,9 +22,10 @@ doReverse :: [a] -> [a]
 doReverse [] = []
 doReverse array = last array : doReverse (init array)
 
-isPalindrome :: [a] -> Bool
+isPalindrome :: Eq a => [a] -> Bool
 isPalindrome array
-    | not $ null array = (x == y) && isPalindrome $ init $ tail array
+    | length array == 1 = True
+    | not $ null array = (x == y) && isPalindrome (init $ tail array)
     | null array = True
     | otherwise = True 
     where x = head array

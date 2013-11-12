@@ -96,8 +96,8 @@ main = hspec $ do
         it "passes with a string that is a palindrome" $
             isPalindrome "madamimadam" `shouldBe` True
         
-        --it "can succeed using a list of Int's" $
-            --isPalindrome [1,2,4,8,16, 8,4,2,1] `shouldBe` True
+        it "can succeed using a list of Int's" $
+            isPalindrome [1,2,4,8,16, 8,4,2,1] `shouldBe` True
         
 
 
