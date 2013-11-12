@@ -1,0 +1,32 @@
+module Problems where
+getLastElement :: [a] -> a
+getLastElement array 
+    | null array = error "Error empty array passed to getLastElement"
+    | length array == 1 = head array
+    | otherwise = getLastElement (tail array)
+
+getSecondLastElement :: [a] -> a
+getSecondLastElement array 
+    | null array = error "Error empty array passed to getSecondLastElement"
+    | otherwise = array !! (length array - 2)
+
+getNthElement :: [a] -> Int -> a
+getNthElement array n = array !! (n - 1)
+
+getLength :: [a] -> Int
+getLength array 
+    | null array = 0
+    | otherwise = 1 + getLength (tail array)
+
+doReverse :: [a] -> [a]
+doReverse [] = []
+doReverse array = last array : doReverse (init array)
+
+isPalindrome :: [a] -> Bool
+isPalindrome array
+    | not $ null array = (x == y) && isPalindrome $ init $ tail array
+    | null array = True
+    | otherwise = True 
+    where x = head array
+          y = last array
+
