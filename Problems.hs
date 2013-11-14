@@ -33,7 +33,15 @@ isPalindrome array
 
 data NestedList a = Elem a | List [NestedList a]
 
-flatten :: NestedList a -> [a]
+flatten :: NestedList Int -> [Int]
 flatten (Elem a) = [a]
 flatten (List [a]) = flatten a
 flatten (List (x : xs)) = flatten x ++ flatten (List xs)
+flatten _ = []
+
+compress :: [a] -> [a]
+compress array 
+    | null array = []
+    | otherwise = array 
+
+    

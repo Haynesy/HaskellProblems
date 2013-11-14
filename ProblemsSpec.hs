@@ -35,7 +35,8 @@ main = hspec $ do
         it "should throw if given an empty list" $
             getSecondLastElement [] `shouldThrow` anyErrorCall 
     
-    describe "Problem 3 - Find the Nth element of a list. The first element in the list is number 1" $ do
+    describe "Problem 3 - Find the Nth element of a list. \
+        \The first element in the list is number 1" $ do
         
         it "returns the first element when called with 1" $
             getNthElement [0, 1, 2] 1 `shouldBe` 0
@@ -105,5 +106,19 @@ main = hspec $ do
             flatten (Elem 5) `shouldBe` [5]
 
         it "cam flatten a nested list" $
-            flatten (List [Elem 1, List [Elem 2, List [Elem 3, Elem 4], Elem 5]]) `shouldBe` [1,2,3,4,5]
+            flatten (List [Elem 1, List [Elem 2, List [Elem 3, Elem 4], Elem 5]]) 
+                `shouldBe` [1,2,3,4,5]
+        
+        it "returns an empty array for an empty list" $
+            flatten (List [] ) `shouldBe` []
+    
+    describe "Problem 8 -  Eliminate consecutive duplicates of list elements." $ do
 
+        it "returns the same list if there are no duplicates" $
+            compress [1] `shouldBe` [1]
+
+        it "it can handle strings" $
+            compress "abc" `shouldBe` "abc"
+
+        it "removes duplicate Int's from an array" $
+            compress [1, 1, 2, 3, 4, 4, 5] `shouldBe` [1, 2, 3, 4, 5]
