@@ -1,4 +1,5 @@
 module Problems where
+
 getLastElement :: [a] -> a
 getLastElement array 
     | null array = error "Error empty array passed to getLastElement"
@@ -39,9 +40,24 @@ flatten (List [a]) = flatten a
 flatten (List (x : xs)) = flatten x ++ flatten (List xs)
 flatten _ = []
 
-compress :: [a] -> [a]
+compress :: Eq a => [a] -> [a]
 compress array 
     | null array = []
-    | otherwise = array 
+    | otherwise = x : compressList xs x
+    where x = head array
+          xs = tail array
 
+-- Problem 8
+compressList :: Eq a => [a] -> a -> [a]
+compressList array lastItem
+    | null array = []
+    | x == lastItem = compressList xs x
+    | otherwise = x : compressList xs x
+    where x = head array
+          xs = tail array
     
+-- Problem 9
+pack :: String -> [String]
+pack str = ["aaabbbb"]
+
+

@@ -122,3 +122,10 @@ main = hspec $ do
 
         it "removes duplicate Int's from an array" $
             compress [1, 1, 2, 3, 4, 4, 5] `shouldBe` [1, 2, 3, 4, 5]
+
+        it "removes duplicate characters from a string" $
+            compress "aaavvvsssdddsd" `shouldBe` "avsdsd"
+
+    describe "Problem 9 - Pack consecutive duplicates of a list of elements into sublists." $ do
+        it "can create element lists of characters from a string" $
+            pack "aaaabccaadeeee" `shouldBe` ["aaaa", "b", "cc", "aa", "d", "eeee"]
