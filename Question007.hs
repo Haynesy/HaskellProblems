@@ -21,7 +21,6 @@ spec = describe "Function flatten" $ do
 
 flatten :: NestedList  a -> [a]
 flatten (Elem x) = [x]
-flatten (Elem _) = []
---flatten (List s@(Elem x)) = flatten s
-flatten (List (x:xs)) = flatten x ++ flatten xs
-flatten (List _) = []
+flatten (List [xs]) = flatten xs
+flatten (List (x : (e : es))) = flatten x ++ flatten e ++ flatten (List es)
+flatten (List []) = []
